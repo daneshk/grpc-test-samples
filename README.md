@@ -1,0 +1,1 @@
+This repository contains gRPC service/client sample written in different languages for testing.
