@@ -1,0 +1,34 @@
+syntax = "proto3";
+package ecommerce;
+
+option go_package = "./";
+
+service ProductInfo {
+    rpc addProduct(ProductDetail) returns (ProductID);
+    rpc getProduct(ProductID) returns (ProductDetail);
+    rpc getRepeatedTypes(RepeatedTypesMessage) returns (RepeatedTypesMessage);
+}
+
+message ProductDetail {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    float price = 4;
+}
+
+message ProductID {
+    string value = 1;
+}
+
+message RepeatedTypesMessage {
+    repeated int32 int32Values = 1;
+    repeated int64 int64Values = 2;
+    repeated uint32 uint32Values = 3;
+    repeated uint64 uint64Values = 4;
+    repeated sint32 sint32Values = 5;
+    repeated sint64 sint64Values = 6;
+    repeated fixed32 fixed32Values = 7;
+    repeated fixed64 fixed64Values = 8;
+    repeated sfixed32 sfixed32Values = 9;
+    repeated sfixed64 sfixed64Values = 10;
+  }

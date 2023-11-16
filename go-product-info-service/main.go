@@ -23,6 +23,7 @@ const (
 
 // server is used to implement ecommerce/product_info.
 type server struct {
+	pb.ProductInfoServer
 	productMap map[string]*pb.ProductDetail
 }
 
@@ -65,6 +66,10 @@ func (s *server) GetProduct(ctx context.Context, in *pb.ProductID) (*pb.ProductD
 		return product, status.New(codes.OK, "").Err()
 	}
 	return nil, status.Errorf(codes.NotFound, "Product does not exist.", in.Value)
+}
+
+func (s *server) GetRepeatedTypes(ctx context.Context, in *pb.RepeatedTypesMessage) (*pb.RepeatedTypesMessage, error) {
+	return in, nil
 }
 
 func main() {
